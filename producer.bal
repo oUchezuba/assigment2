@@ -49,7 +49,7 @@ type Voter record {
 
 // Create SQL client for MySQL database
 jdbc:Client voterDB = new ({
-    url: config:getAsString("DATABASE_URL", "jdbc:mysql://localhost:9090/VOTER_DATA"),
+    url: config:getAsString("DATABASE_URL", "jdbc:mysql://localhost:9092/VOTER_DATA"),
     username: config:getAsString("DATABASE_USERNAME", "root"),
     password: config:getAsString("DATABASE_PASSWORD", "root"),
     poolOptions: { maximumPoolSize: 5 },
@@ -57,7 +57,7 @@ jdbc:Client voterDB = new ({
 });
 
 @docker:Config{
-    name: "testVoTo"
+    name: "testVoTo",
     tag: "V4.3"
 }
 @docker:Expose{}
@@ -78,7 +78,7 @@ jdbc:Client voterDB = new ({
    baseImage: "",
    name: "",
    copyFiles: [{ target: "",
-               source: <path_to_JDBC_jar> }]
+               source: "jdbc:mysql://localhost:9090/VOTER_DATA" }]
 }
 
 @http:ServiceConfig{
@@ -159,7 +159,7 @@ resource function addVoters(http:Caller outboundEP, http:Request request){
         "address": "Windhoek, Kleine Kuppe",
         "citinzenship: Namibian",
         "age: 43",
-        "gender: male"
+        "gender: male",
         "category": VOTER
       }
       {
@@ -168,7 +168,7 @@ resource function addVoters(http:Caller outboundEP, http:Request request){
         "address": "Swakopmund, Ocean View",
         "citinzenship: Namibian",
         "age: 36",
-        "gender: female"
+        "gender: female",
         "category": VOTER
       }
       {
@@ -177,7 +177,7 @@ resource function addVoters(http:Caller outboundEP, http:Request request){
         "address": "Windhoek, Kleine Kuppe",
         "citinzenship: Namibian",
         "age: 34",
-        "gender: other"
+        "gender: other",
         "category": VOTER
       }
     ]
@@ -231,7 +231,7 @@ var voterID = ints:fromString(voterId);
         } 
         else if(sendResult is error){
             response.statusCode = 500;
-            response.setJsonPayload("The ID entered is not registered in the system!");
+            response.setJsonPayload({"The ID entered is not registered in the system!"});
             var responseResult = outboundEP->respond(response);
         }
         //Send a success
@@ -301,12 +301,12 @@ resource function getdateInfo(grpc:Caller caller, grpc:Headers headers) {
     boolean deadlineExceeded = caller->isDeadlineExceeded(headers);
 }
 
-     if(deadline = json){
+    if(deadline is json){
         json resultMessage;
         http:Request votingManagerReq = new;
         json resultjson = check json.convert(result);
 
         http:Response resultResponse=  check resultMgtEP->post("Deadline reached!", resultManagerReq);
         json resultResponseJSON = check resultResponse.getJsonPayload();
-    }
+    } 
 }
