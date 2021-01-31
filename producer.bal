@@ -24,17 +24,17 @@ public type APIGatewayListener object {
        httpListener = new;
    }
 
-   public function init(EndpointConfiguration config);
+   public function init(EndpointConfiguration config){}
 
-   public function initEndpoint() returns (error);
+   public function initEndpoint() returns (error){}
 
-   public function register(typedesc serviceType);
+   public function register(typedesc serviceType){}
 
-   public function start();
+   public function start(){}
 
-   public function deadline() returns (http:Connection);
+   public function deadline() returns (http:Connection){}
 
-   public function getFrauds();
+   public function getFrauds(){}
 };
 
 
