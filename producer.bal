@@ -3,6 +3,7 @@ import ballerina/log;
 import ballerina/http;
 import ballerina/kafka;
 import wso2/gateway;
+import ballerina/docker; 
 
 kafka:ProducerConfig producerConfigs = {
     bootstrapServers: "localhost:9092, localhost:9092", //producer localhost,
