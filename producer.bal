@@ -4,12 +4,12 @@ import ballerina/http;
 import ballerina/kafka;
 import wso2/gateway;
 
-kafka:ProducerConfig producerConfigs ={
-    bootstrapServers: "localhost:9092, localhost:9092" //producer localhost,
+kafka:ProducerConfig producerConfigs = {
+    bootstrapServers: "localhost:9092, localhost:9092", //producer localhost,
     clientId: "voters",
     acks: "all",
     retryCount: 3
-}
+};
 
 kafka:Producer kafkaProducer = new (producerConfigs);
 
