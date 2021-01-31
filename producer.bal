@@ -161,7 +161,7 @@ resource function addVoters(http:Caller outboundEP, http:Request request){
         "age: 43",
         "gender: male"
         "category": VOTER
-      },
+      }
       {
         "id: 2",
         "name": "Kaitlyn Tarver",
@@ -170,7 +170,7 @@ resource function addVoters(http:Caller outboundEP, http:Request request){
         "age: 36",
         "gender: female"
         "category": VOTER
-      },
+      }
       {
         "id: 3",
         "name": "Olzen Buyanha",
