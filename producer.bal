@@ -231,7 +231,7 @@ var voterID = ints:fromString(voterId);
         } 
         else if(sendResult is error){
             response.statusCode = 500;
-            response.setJsonPayload({"The ID entered is not registered in the system!"});
+            response.setJsonPayload("The ID entered is not registered in the system!");
             var responseResult = outboundEP->respond(response);
         }
         //Send a success
