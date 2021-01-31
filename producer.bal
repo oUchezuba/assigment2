@@ -301,12 +301,12 @@ resource function getdateInfo(grpc:Caller caller, grpc:Headers headers) {
     boolean deadlineExceeded = caller->isDeadlineExceeded(headers);
 }
 
-    if(deadline is json){
+     if(deadline = json){
         json resultMessage;
         http:Request votingManagerReq = new;
         json resultjson = check json.convert(result);
 
         http:Response resultResponse=  check resultMgtEP->post("Deadline reached!", resultManagerReq);
         json resultResponseJSON = check resultResponse.getJsonPayload();
-    } 
+    }
 }
