@@ -210,17 +210,17 @@ service viewVoter on httpListener {
         http:Response res = new;
 
 
-var empID = ints:fromString(employeeId);
+var voterID = ints:fromString(voterId);
         if (voterID is int) {
             // Invoke retrieveById function to retrieve data from MYSQL database
             var result = rch.readJson(voterId);
 
-            json viewCurrentInfo = {"id: ",
+            json viewCurrentInfo = {"id":" ",
         "name": " ",
         "address": " ",
-        "citinzenship:  ",
-        "age:  ",
-        "gender:  "
+        "citinzenship":" ",
+        "age":" ",
+        "gender":" ",
         "category": VOTER};
 
             byte[] message = viewCurrentInfo.toString().toBytes();
