@@ -3,6 +3,7 @@ import ballerina/io;
 import ballerina/kafka;
 import ballerina/log;
 import ballerina/lang;
+import ballerina/docker; 
 
 kafka:ConsumerConfig consumerConfigs{
     bootstrapServers: "localhost:9092"
